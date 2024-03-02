@@ -1,8 +1,7 @@
-import React from 'react';
-import CurrencyConverter from './CurrencyConverter';
-import Result from './Result';
-import Error from './Error';
-import './App.css';
+import React from "react";
+import CurrencyConverter from "./CurrencyConverter";
+import Result from "./Result";
+import "./App.css";
 
 function App() {
   return (
