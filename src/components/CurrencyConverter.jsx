@@ -1,21 +1,13 @@
-import React, { useState } from "react";
+import { useState } from "react";
 
 function CurrencyConverter() {
-  const [amount, setAmount] = useState("");
-  const [currency, setCurrency] = useState("EUR");
   const [result, setResult] = useState(null);
   const [error, setError] = useState(null);
 
-  const handleAmountChange = (e) => {
-    setAmount(e.target.value);
-  };
-
-  const handleCurrencyChange = (e) => {
-    setCurrency(e.target.value);
-  };
-
-  const handleSubmit = (e) => {
-    e.preventDefault();
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    const amount = event.target.amount.value;
+    const currency = event.target.currency.value;
 
     if (isNaN(amount) || amount === 0) {
       setError("Proszę wpisać kwotę większą od 0");
@@ -28,7 +20,8 @@ function CurrencyConverter() {
     )
       .then((response) => {
         if (!response.ok) {
-          throw new Error("Wystąpił błąd przy pobieraniu danych");
+          setError("Wystąpił błąd przy pobieraniu danych");
+          setResult(null);
         }
         return response.json();
       })
@@ -51,7 +44,7 @@ function CurrencyConverter() {
   return (
     <form onSubmit={handleSubmit}>
       <div>
-        <select value={currency} onChange={handleCurrencyChange}>
+        <select name="currency">
           <option value="EUR">EURO</option>
           <option value="USD">USD</option>
           <option value="CHF">CHF</option>
@@ -59,9 +52,8 @@ function CurrencyConverter() {
       </div>
       <div>
         <input
+          name="amount"
           type="number"
-          value={amount}
-          onChange={handleAmountChange}
           placeholder="Kwota (PLN)"
           min="0.01"
           step="0.01"

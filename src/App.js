@@ -1,13 +1,13 @@
-import React from "react";
-import CurrencyConverter from "./CurrencyConverter";
-import Result from "./Result";
+import CurrencyConverter from "./components/CurrencyConverter";
+import Result from "./components/Result";
 import "./App.css";
 
 function App() {
   return (
     <div className="App">
-      <h1>Przelicznik walut</h1>
+      <h1 className="header">Przelicznik walut</h1>
       <CurrencyConverter />
+      <Result />
     </div>
   );
 }
