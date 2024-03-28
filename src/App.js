@@ -1,5 +1,4 @@
 import CurrencyConverter from "./components/CurrencyConverter";
-import Result from "./components/Result";
 import "./App.css";
 
 function App() {
@@ -7,7 +6,6 @@ function App() {
     <div className="App">
       <h1 className="header">Przelicznik walut</h1>
       <CurrencyConverter />
-      <Result />
     </div>
   );
 }
